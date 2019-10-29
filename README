@@ -1,0 +1,6 @@
+# Vulnerable Website
+
+* To set up the database login using `mysql -u student -p` and type CCSEP2019 for the password.
+    * Next, enter `source /path/to/init_schema.sql;`
+    * After, enter `source /path/to/seed_data.sql;`
+* Afterwards navigate to 192.168.56.150/ in the browser which will take you to the create a user/login page (index.php).

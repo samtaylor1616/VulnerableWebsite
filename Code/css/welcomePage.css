@@ -1,0 +1,55 @@
+html,
+body {
+  background-color: #e6e6e6;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.topImg {
+  height: 100%;
+  width: 100%;
+  opacity: 0.65;
+  background-size: 100% 100%;
+}
+
+.pageTitle {
+  font-size: 3.2rem;
+  padding: 3rem;
+  vertical-align: center;
+  z-index: 1;
+}
+
+.pageTitle,
+.cardContainer
+.card-title {
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.cardContainer {
+  margin-top: -550px;
+  z-index: 1;
+}
+
+.cardContainer .card {
+  height: 200px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cardContainer .card-title {
+  margin: -30px 2px 2px;
+}
+
+.cardContainer .card-img-top {
+  height: 175px;
+}
+
+.fas, .fa-user {
+  color: rgb(48, 166, 74);
+}
+
+.btn-pwd {
+  width: 100%;
+}

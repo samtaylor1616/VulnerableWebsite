@@ -1,0 +1,29 @@
+CREATE SCHEMA IF NOT EXISTS assignment;
+
+CREATE TABLE assignment.test (
+    id INT(11) NOT NULL,
+    name VARCHAR(45), 
+    age INT(11),
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE assignment.users (
+	id INT NOT NULL AUTO_INCREMENT, 
+	username VARCHAR(50) NOT NULL UNIQUE,
+	password VARCHAR(50) NOT NULL,
+	money DECIMAL(20,2) DEFAULT 0.00 NOT NULL,
+	userEnabled BOOLEAN NOT NULL DEFAULT TRUE,
+	isAdmin BOOLEAN NOT NULL DEFAULT FALSE,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE assignment.items (
+	id INT NOT NULL AUTO_INCREMENT,
+	ownersName VARCHAR(50) NOT NULL,
+	title VARCHAR(50) NOT NULL,
+	description VARCHAR(250) NOT NULL,
+	price DECIMAL(20,2) NOT NULL DEFAULT 0.00 NOT NULL,
+	
+	PRIMARY KEY (id),
+	FOREIGN KEY (ownersName) REFERENCES users (username) ON DELETE CASCADE
+);

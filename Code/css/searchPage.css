@@ -1,0 +1,54 @@
+html,
+body {
+  background: #e6e6e6;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.topImg {
+  height: 75%;
+  width: 100%;
+  opacity: 0.65;
+  background-size: 100% 100%;
+}
+
+.pageTitle {
+  font-size: 3.2rem;
+  padding: 2rem;
+  vertical-align: center;
+  z-index: 1;
+}
+
+.pageTitle {
+  font-size: 4rem;
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.searchTable {
+  margin-top: -250px;
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+.table td{
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.table thead th {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(0, 0, 0, 0);
+  font-size: 1.25rem;
+}
+
+.itemsTable {
+  margin: 0;
+}
+
+.form-inline .form-control {
+  width: 25%;
+}
