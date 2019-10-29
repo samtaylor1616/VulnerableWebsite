@@ -28,3 +28,6 @@ The credentials for the VM is student with the password CCSEP2019. Which can be 
    
 # File breakdown, Vulnerabilities, & Solutions
 A detailed break down of the vulnerabilities and solutions can be found in Report.pdf
+
+## Future work
+Replace the bulky VM with a container such as Docker
