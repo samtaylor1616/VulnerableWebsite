@@ -33,72 +33,75 @@ if (!empty($_POST['lockUserById']) && (!empty($_POST['flagSet']))) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Admin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin</title>
 
-   <script src="./js/jquery.min.js"></script>
-   <link rel="stylesheet" href="./css/bootstrap.min.css">
-   <link rel="stylesheet" href="./css/fontawesome.css">
-   <link rel="stylesheet" href="./css/admin.css">
+    <script src="./js/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/fontawesome.css">
+    <link rel="stylesheet" href="./css/admin.css">
 
-   <script>
-      // Must use javascript function for onClick which will set 
-      // the values of a hidden form and submit it
-      function deletePerson(id) {
-         document.getElementById('delUserById').value = id;
-         $("#deleteUserForm").submit();
-      }
-      function deleteItem(id) {
-         document.getElementById('delItemById').value = id;
-         $("#deleteItemForm").submit();
-      }
+    <script>
+    // Must use javascript function for onClick which will set 
+    // the values of a hidden form and submit it
+    function deletePerson(id) {
+        document.getElementById('delUserById').value = id;
+        $("#deleteUserForm").submit();
+    }
 
-      // Enables or disables user
-      function setUserLock(id, flag) {
-         document.getElementById('lockUserById').value = id;
-         document.getElementById('flagSet').value = flag;
-         $("#setUserLockForm").submit();
-      }
-   </script>
+    function deleteItem(id) {
+        document.getElementById('delItemById').value = id;
+        $("#deleteItemForm").submit();
+    }
+
+    // Enables or disables user
+    function setUserLock(id, flag) {
+        document.getElementById('lockUserById').value = id;
+        document.getElementById('flagSet').value = flag;
+        $("#setUserLockForm").submit();
+    }
+    </script>
 </head>
+
 <body>
-<?php
+    <?php
     $page = "Admin";
     require_once("navbar.php");
   ?>
 
-   <div class="container mb-3">
-      <h1 class="whiteFont mt-3">Search Users:</h1>
-      <!-- FORM -->
-      <form method="GET" action="./admin.php">
-         <div class="input-group mt-3 mb-3 w-50">
-            <input type="text" class="form-control" placeholder="Username to search by" name="name" >
-            <div class="input-group-append">
-               <!-- type=submit will trigger the form -->
-               <button class="btn btn-outline-secondary" type="submit" id="searchButton">Search</button>
+    <div class="container mb-3">
+        <h1 class="whiteFont mt-3">Search Users:</h1>
+        <!-- FORM -->
+        <form method="GET" action="./admin.php">
+            <div class="input-group mt-3 mb-3 w-50">
+                <input type="text" class="form-control" placeholder="Username to search by" name="name">
+                <div class="input-group-append">
+                    <!-- type=submit will trigger the form -->
+                    <button class="btn btn-outline-secondary" type="submit" id="searchButton">Search</button>
+                </div>
             </div>
-         </div>
-      </form>
-      <!-- END FORM -->
+        </form>
+        <!-- END FORM -->
 
-      <div class="card">
-         <!-- Start Table -->
-         <table class="table">
-            <!-- Table Header -->
-            <thead>
-               <th>User ID</th>
-               <th>Username</th>
-               <th>Money</th>
-               <th>User Enabled/Disabled</th>
-               <th>Admin Enabled</th>
-               <th>Delete</th>
-            </thead>
-            <!-- End Table Header -->
-            <tbody>
-               <?php 
+        <div class="card">
+            <!-- Start Table -->
+            <table class="table">
+                <!-- Table Header -->
+                <thead>
+                    <th>User ID</th>
+                    <th>Username</th>
+                    <th>Money</th>
+                    <th>User Enabled/Disabled</th>
+                    <th>Admin Enabled</th>
+                    <th>Delete</th>
+                </thead>
+                <!-- End Table Header -->
+                <tbody>
+                    <?php 
                   // Provides true or false rather than 1 or 0
                   function getBoolean($x) {
                      return $x ? 'True' : 'False';
@@ -140,8 +143,6 @@ if (!empty($_POST['lockUserById']) && (!empty($_POST['flagSet']))) {
                      echo "<td>";
                         echo constructBtn( $row["userEnabled"], $row["id"], 'setUserLock');
                      echo "</td>";
-
-                     // echo "<td>$userEnabled</td>";
                      echo "<td>$isAdmin</td>";
                      
                      // Add a button that sends the ID of the user to the delete function
@@ -151,30 +152,31 @@ if (!empty($_POST['lockUserById']) && (!empty($_POST['flagSet']))) {
                      echo "</tr>";
                   }
                ?>
-            </tbody>
-         </table>
-         <!-- End Table -->
-      </div>
-   </div>
+                </tbody>
+            </table>
+            <!-- End Table -->
+        </div>
+    </div>
 
-   <?php
+    <?php
     $page = "Admin";
     require_once("itemList.php");
   ?>
 
-   <!-- Hidden form used to delete a user by their id -->
-   <!-- Delete User form -->
-   <form id="deleteUserForm" method='post' action="<?php echo $_SERVER['PHP_SELF']; ?>">
-      <input name='delUserById' type='hidden' class='form-control' id='delUserById' placeholder='id'>
-   </form>
-   <!-- Delete Item form -->
-   <form id="deleteItemForm" method='post' action="<?php echo $_SERVER['PHP_SELF']; ?>">
-      <input name='delItemById' type='hidden' class='form-control' id='delItemById' placeholder='id'>
-   </form>
-   <!-- Disable/Enable User form -->
-   <form id="setUserLockForm" method='post' action="<?php echo $_SERVER['PHP_SELF']; ?>">
-      <input name='lockUserById' type='hidden' class='form-control' id='lockUserById'>
-      <input name='flagSet' type='hidden' class='form-control' id='flagSet'>
-   </form>
+    <!-- Hidden form used to delete a user by their id -->
+    <!-- Delete User form -->
+    <form id="deleteUserForm" method='post' action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <input name='delUserById' type='hidden' class='form-control' id='delUserById' placeholder='id'>
+    </form>
+    <!-- Delete Item form -->
+    <form id="deleteItemForm" method='post' action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <input name='delItemById' type='hidden' class='form-control' id='delItemById' placeholder='id'>
+    </form>
+    <!-- Disable/Enable User form -->
+    <form id="setUserLockForm" method='post' action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <input name='lockUserById' type='hidden' class='form-control' id='lockUserById'>
+        <input name='flagSet' type='hidden' class='form-control' id='flagSet'>
+    </form>
 </body>
+
 </html>

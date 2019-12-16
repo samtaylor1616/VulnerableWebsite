@@ -1,11 +1,5 @@
 <?php
-/*
- * File: utils.php
- * Author: Samantha Taylor
- * -----
- * Purpose: File contains helper functions for
- * managing users and items
-*/
+/* File contains helper functions for managing users and items */
 
 // Adds money to a users account
 function addFunds($db, $username, $amount) {

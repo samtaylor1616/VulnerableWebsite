@@ -1,11 +1,5 @@
 <?php
-/*
- * File: login.php
- * Author: Samantha Taylor
- * -----
- * Purpose: File contains helper functions for
- * creating and logging in users
-*/
+/* Purpose: File contains helper functions for creating and logging in users */
 function pwdMatch($pwd1, $pwd2) {
   $doesMatch = false;
   if ($pwd1 === $pwd2) {

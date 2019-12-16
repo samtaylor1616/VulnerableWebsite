@@ -1,37 +1,30 @@
-<!-- 
- * Author: Samantha Taylor
- * -----
- * Purpose: Reusable component that displays the items in the database
- -->
+<!-- Purpose: Reusable component that displays the items in the database-->
 <div class="container">
-  <hr class="mb-3"/>
-  <h1 class="whiteFont mt-3">Search Items:</h1>
-  <!-- FORM -->
-  <form method="GET" action="./admin.php">
-    <div class="input-group mt-2 mb-3 w-50">
-        <input type="text" class="form-control" placeholder="Name of item to search by" name="itemName" >
-        <div class="input-group-append">
-          <!-- type=submit will trigger the form -->
-          <button class="btn btn-outline-secondary" type="submit" id="searchItemBtn">Search</button>
+    <hr class="mb-3" />
+    <h1 class="whiteFont mt-3">Search Items:</h1>
+    <!-- FORM -->
+    <form method="GET" action="./admin.php">
+        <div class="input-group mt-2 mb-3 w-50">
+            <input type="text" class="form-control" placeholder="Name of item to search by" name="itemName">
+            <div class="input-group-append">
+                <!-- type=submit will trigger the form -->
+                <button class="btn btn-outline-secondary" type="submit" id="searchItemBtn">Search</button>
+            </div>
         </div>
-    </div>
-  </form>
-  <!-- END FORM -->
-  <div class="card mb-5">
-    <!-- Start Table -->
-    <table class="table">
-      <!-- Table Header -->
-      <thead>
-        <th>Item ID</th>
-        <th>Owners Username</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Delete</th>
-      </thead>
-      <!-- End Table Header -->
-      <tbody>
-          <?php 
+    </form>
+    <!-- END FORM -->
+    <div class="card mb-5">
+        <table class="table">
+            <thead>
+                <th>Item ID</th>
+                <th>Owners Username</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                <?php 
           // If the GET variable "itemName" is set then use it
           if(isset($_GET["itemName"])){
             $name = $_GET["itemName"];
@@ -60,7 +53,7 @@
             echo "</td>";
           }
           ?>
-      </tbody>
-    </table>
-  </div>
+            </tbody>
+        </table>
+    </div>
 </div>

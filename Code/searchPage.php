@@ -1,15 +1,8 @@
 <?php
-/*
- * Last Modified: Wednesday, 2nd October 2019 8:43:47 pm
- * Modified By: Samantha Taylor
- * -----
- * Purpose: Search page
-*/
 include('validateSession.php');
-
-// Include the php database configuration
 require_once("db.php");
 require_once("utils.php");
+
 // Disables chrome XSS protection for reflective XSS
 header("X-XSS-Protection: 0");
 
@@ -36,69 +29,71 @@ if (!empty($_POST['buyItemById'])) {
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <script src="./js/jquery.min.js"></script>
-  <link rel="stylesheet" href="./css/fontawesome.css">
-  <link rel="stylesheet" href="./css/bootstrap.min.css">
-  <link rel="stylesheet" href="./css/searchPage.css">
-  <title>Search results</title>
+    <script src="./js/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/fontawesome.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/searchPage.css">
+    <title>Search results</title>
 
-  <script>
+    <script>
     function deleteItem(id) {
-      document.getElementById('delItemById').value = id;
-      $("#deleteItemForm").submit();
+        document.getElementById('delItemById').value = id;
+        $("#deleteItemForm").submit();
     }
 
     function buyItem(itemId) {
-      document.getElementById('buyItemById').value = itemId;
-      $("#buyItemForm").submit();
+        document.getElementById('buyItemById').value = itemId;
+        $("#buyItemForm").submit();
     }
-  </script>
+    </script>
 </head>
 
 <body>
-  <?php
+    <?php
     $page = "Search";
     require_once("navbar.php");
   ?>
-  <div class="topImg" style="background-image: url(./assets/simple.jpg);">
-    <form class="form-inline p-2">
-      <input name="searchTitle" id="searchTitle" class="form-control mr-sm-2 search" type="text" placeholder="Search by Title" aria-label="Search">
-      <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-    <form class="form-inline p-2">
-      <input name="searchUser" id="searchName" class="form-control mr-sm-2 search" type="text" placeholder="Search by Username" aria-label="Search">
-      <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-    <h1 class="text-center pageTitle">
-      Search Results
-      <?php
+    <div class="topImg" style="background-image: url(./assets/simple.jpg);">
+        <form class="form-inline p-2">
+            <input name="searchTitle" id="searchTitle" class="form-control mr-sm-2 search" type="text"
+                placeholder="Search by Title" aria-label="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <form class="form-inline p-2">
+            <input name="searchUser" id="searchName" class="form-control mr-sm-2 search" type="text"
+                placeholder="Search by Username" aria-label="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <h1 class="text-center pageTitle">
+            Search Results
+            <?php
         if (!empty($_GET["searchTitle"])) {
           echo " For: ".$_GET["searchTitle"];
         }
       ?>
-      <?php
+            <?php
         if(!empty($_GET["searchUser"])) {
           echo " For: ".$_GET["searchUser"];
         }
       ?>
-    </h1>
-  </div>
+        </h1>
+    </div>
 
-  <div class="card mr-4 ml-4 mb-4 searchTable">
-    <table class="table itemsTable">
-      <thead>
-        <th>Title</th>
-        <th>Owners Name</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Buy</th>
-      </thead>
-      <tbody>
-        <?php
+    <div class="card mr-4 ml-4 mb-4 searchTable">
+        <table class="table itemsTable">
+            <thead>
+                <th>Title</th>
+                <th>Owners Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Buy</th>
+            </thead>
+            <tbody>
+                <?php
           // If the flag is true it will create a green happy face button
           // otherwise the default is a orange sad face button
           function constructBtn($ownersName, $id, $price) {
@@ -121,7 +116,6 @@ if (!empty($_POST['buyItemById'])) {
           $name = $_GET["searchUser"];
           $sql = "SELECT * FROM items where ownersName LIKE '%$name%'";
          } else {
-            // Otherwise just grab them all
             $sql = "SELECT * FROM items";
          }
           $result = mysqli_query($db, $sql);
@@ -138,18 +132,19 @@ if (!empty($_POST['buyItemById'])) {
             echo "</tr>";
           }
         ?>
-      </tbody>
-    </table>
+            </tbody>
+        </table>
 
-  <!-- Hidden form used to delete a user by their id -->
-  <!-- Delete Item form -->
-  <form id="deleteItemForm" method='post' action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    <input name='delItemById' type='hidden' class='form-control' id='delItemById' placeholder='id'>
-  </form>
-    <!-- Buy Item form -->
-    <form id="buyItemForm" method='post' action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    <input name='buyItemById' type='hidden' class='form-control' id='buyItemById' placeholder='id'>
-  </form>
-  </div>
+        <!-- Hidden form used to delete a user by their id -->
+        <!-- Delete Item form -->
+        <form id="deleteItemForm" method='post' action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <input name='delItemById' type='hidden' class='form-control' id='delItemById' placeholder='id'>
+        </form>
+        <!-- Buy Item form -->
+        <form id="buyItemForm" method='post' action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <input name='buyItemById' type='hidden' class='form-control' id='buyItemById' placeholder='id'>
+        </form>
+    </div>
 </body>
+
 </html>

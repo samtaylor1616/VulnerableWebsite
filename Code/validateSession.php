@@ -1,11 +1,5 @@
 <?php
-/*
- * Author: Samantha Taylor
- * -----
- * Purpose: Checks the user is logged in otherwise send them to the login page
- */
-
-  // Include the php database configuration
+/* Purpose: Checks the user is logged in otherwise send them to the login page */
   require_once("db.php");
   session_start();
 
