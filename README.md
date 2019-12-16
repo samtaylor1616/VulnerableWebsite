@@ -36,8 +36,8 @@ Update Password          | Admin Page
   * Disable/lock regular users 
   * Remove items for sale
 
-<img src="./ScreenShots/login.png" width="600" height="300">
-
 ## Current Issues & Future work: 
 * Unfortunately VMs are quite large and I wasn't able to upload it. However future work will update this to a containerized method.
-* For images and a break down of the vulnerabilities and how to prevent them look at the **README.pdf**
+* *For images and a break down of the vulnerabilities and how to prevent them look at the README.pdf*
+
+<img src="./ScreenShots/login.png" width="600" height="300">
