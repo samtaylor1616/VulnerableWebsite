@@ -3,9 +3,9 @@
 * This system is set up in a virtual machine that is configured with a LAMP (Linux, Apache, MYSQL, PHP) stack setup. 
 * The web application hosted on this machone allows users to buy and sell items. 
 * Hidden beneath the surface are exploitable vulnerabilities such as, XSS, SQL injection, Broken Access Control and more.
-* The overall aim is to explore the importance of understanding how various flaws and vulnerabilities work, how to discover and prevent them (prevention is found in report.pdf).
+* The overall aim is to explore the importance of understanding how various flaws and vulnerabilities work, how to discover and prevent them (prevention is found in README.pdf).
 
-<img src="Screenshots/login.png" width="400" height="650">
+<img src="./Screenshots/Welcome.png" width="400" height="650">
 
 # Usage
 The machine is configured with the static IP address of 192.168.56.150 for a host only adapter. 
